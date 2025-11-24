@@ -9,32 +9,74 @@ By completing this lab, you will learn how to:
 - Create custom agents for planning and implementation
 - Use prompt files to define reusable workflows
 - Guide AI to generate high-quality, architecture-aligned code
-- Implement a complete C++ CLI application using agent mode
 
-## 📋 Prerequisites
+## Prerequisites
 
-- Visual Studio Code with GitHub Copilot enabled
-- C++ compiler (g++ 7+ or clang++ 5+) with C++17 support
-- GNU Make
-- Git
-- Basic familiarity with C++ and command-line tools
+To complete the hands-on labs, ensure you have the following:
+
+### Required Software
+- **Visual Studio Code** (Latest) – [Download here](https://code.visualstudio.com/)
+- **GitHub Copilot** - VS Code extension ([github.copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) v1.284.0 or later)
+- **GitHub Copilot Chat** - VS Code extension ([github.copilot-chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) v0.25.1 or later)
+- **GitHub Pull Requests** - VS Code extension ([github.vscode-pull-request-github](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) 0.120.0 or later)
+- **GitHub MCP Server** - VS Code extension for agentic workflows ([github.vscode-github-mcp](https://marketplace.visualstudio.com/items?itemName=github.vscode-github-mcp))
+- **Git** – [Download here](https://git-scm.com/install/)
+
+### Install the GitHub MCP server
+
+1. Open the **Extensions** view
+
+   * Press **Ctrl+Shift+X**.
+   * In the search box, type **@mcp GitHub**.
+   * Find **GitHub — Official GitHub MCP Server** and click **Install**.
+
+2. Approve the authentication prompt
+
+   * You will see a dialog, “The MCP Server Definition ‘github/github-mcp-server’ wants to authenticate to GitHub.”
+   * Click **Allow**.
+
+3. Pick your GitHub account
+
+   * A quick pick appears asking which account to use.
+   * Select your account, for example **YKhadas**.
+   * VS Code will finish connecting the server.
+
+4. Verify the server is running
+
+   * Press **Ctrl+Shift+P** (Windows) or **Cmd+Shift+P** (Mac) to open the Command Palette.
+   * Type **MCP: List Servers**, then press **Enter**.
+   * In the list, confirm **github/github-mcp-server** shows **Running**.
+
+5. Enable the server in Copilot Chat tools
+
+   * Open the **GitHub Copilot Chat** panel.
+   * Click the **Tools** icon at the bottom right of the chat window. It opens the **Configure Tools** picker.
+   * In the list, find **MCP Server: github/github-mcp-server** and make sure it is **checked**.
+   * Click **OK** to save.
+
+You are set. If **github/github-mcp-server** does not show as Running, run **MCP: List Servers** again, or reload the window with **Developer: Reload Window**, then repeat step 5 to confirm the tool is checked.
+
+### Step 0 — Create a fork of the repository. 
+
+### Step 1 — Create a feature branch
+
+Create a feature branch and push it to the repo. The changes you make will go on that branch, and you'll create a Pull Request later.
+
+Make sure to replace `yuliya-task-manager` with a relevant branch name. 
+
+**Create and switch to your new feature branch:**
+```bash
+git checkout -b yuliya-task-manager
+```
+
+**Push the new branch to the remote repository:**
+```bash
+git push -u origin yuliya-task-manager
+```
 
 ## 🏗️ Application Overview
 
-In this lab, you'll implement a **Task Manager CLI** - a command-line task management application for developers. The application features:
-
-- ✅ Add tasks with descriptions and priorities (low, medium, high)
-- 📝 List all tasks with their status
-- ✔️ Mark tasks as complete
-- 🗑️ Delete tasks
-- 💾 Save/load tasks from a file
-
-This application demonstrates context engineering because it has:
-- Clear requirements and scope
-- Multiple components (CLI, business logic, data persistence)
-- Testable functionality
-- Architectural patterns to follow
-- Small enough to implement quickly with AI assistance
+In this lab, you'll implement a **Task Manager CLI** - a command-line task management application for developers. 
 
 ## 📚 Lab Structure
 
@@ -60,6 +102,9 @@ This repository contains the context engineering setup:
 
 ## 🚀 Lab Steps
 
+
+### Step 1: 
+
 ### Step 1: Explore the Context Engineering Setup
 
 1. **Review the documentation files** to understand the project:
@@ -80,12 +125,18 @@ This repository contains the context engineering setup:
 4. **Check the templates and prompts**:
    - Open `plan-template.md` to see the implementation plan structure
    - Open `.github/prompts/plan-qna.prompt.md` for the clarifying questions prompt
+  
+### Step 2: Add custom instructions for testing guidelines:
+From VS Code command palette:
 
-### Step 2: Create an Implementation Plan
+#### Visual Guide
+![Lab Instructions](img/lab%20instructions.png)
+
+### Step 3: Create an Implementation Plan
 
 Now you'll use the planning agent to create a detailed implementation plan.
 
-1. **Open GitHub Copilot Chat** in VS Code (Ctrl+Alt+I or Cmd+Alt+I)
+1. **Open GitHub Copilot Chat** in VS Code
 
 2. **Select the `plan` agent** from the agent picker in the chat interface
 
@@ -105,130 +156,129 @@ Now you'll use the planning agent to create a detailed implementation plan.
    - Does it follow the plan-template.md structure?
    - Does it break down into clear, actionable tasks?
    - Does it align with ARCHITECTURE.md design?
-   - Are all components covered (CLI, TaskManager, FileStorage, Task)?
-
-7. **Iterate if needed**:
-   - Ask follow-up questions
-   - Request refinements to the plan
-   - Ensure all requirements are covered
-
-8. **Save the plan** (optional):
-   - Ask the agent to save the plan to a file: "Save this plan to task-manager-plan.md"
-   - Or copy it to a new file manually
 
 ### Step 3: Implement Using Agent Mode
 
-Now you'll implement the application using GitHub Copilot's agent mode.
+Once the implementation plan is ready, use the TDD implementation agent to write the code.
 
-1. **Switch to Agent Mode** in GitHub Copilot Chat (look for the agent icon or use the handoff from the plan agent)
+1. Switch to the implementation agent:
 
-2. **Provide the implementation plan**:
-   ```
-   Implement the Task Manager CLI according to the plan we just created. Follow TDD principles.
-   ```
+In Copilot Chat, choose the TDD implementation agent configured in .github/agents/tdd.agent.md, or
+Use the handoff link in the planning agent’s response (for example: “Start Implementation”).
 
-   Or if you saved the plan to a file:
-   ```
-   Implement #task-manager-plan.md following TDD principles
-   ```
-
-3. **Let the agent work autonomously**:
+2. **Let the agent work autonomously**:
    - The agent will create files, write code, and build the application
    - It will follow the architecture in ARCHITECTURE.md
    - It will adhere to code style in CONTRIBUTING.md
    - Watch as it implements each component
 
-4. **Review the implementation**:
+3. **Review the implementation**:
    - Check that files are created in the correct structure
    - Verify code follows the C++17 standard and style guide
-   - Ensure error handling is implemented
    - Confirm tests are included (if TDD agent was used)
 
 ### Step 4: Build and Test the Application
 
 1. **Build the application**:
-   ```bash
-   make clean && make
-   ```
+ 
+2. **Add some tasks**:
 
-2. **Test the help command**:
-   ```bash
-   ./task-manager help
-   ```
+3. **List tasks**:
+   
+4. **Complete a task**:
+  
+### Step 5: Add a Document Agent
+Create a complete workflow, add a Document agent:
 
-3. **Add some tasks**:
-   ```bash
-   ./task-manager add "Implement file storage" high
-   ./task-manager add "Add unit tests" medium
-   ./task-manager add "Update documentation" low
-   ```
+1. Plan agent creates detailed plan
+2. TDD agent implements with tests
+3. Document agent updates documentation (Readme.md)
 
-4. **List tasks**:
-   ```bash
-   ./task-manager list
-   ```
+#### Visual Guide
+![Lab Instructions](img/custom%20agent.png)
 
-5. **Complete a task**:
-   ```bash
-   ./task-manager complete 1
-   ./task-manager list
-   ```
+**Commit changes with VS Code Source Control**
 
-6. **Delete a task**:
-   ```bash
-   ./task-manager delete 2
-   ./task-manager list
-   ```
+Once the test suite passes, use VS Code's Source Control panel to commit your changes.
 
-7. **Verify persistence**:
-   - Exit and run `./task-manager list` again
-   - Tasks should be loaded from the saved file
+- Open the Source Control panel and review the changes.
 
-### Step 5: Iterate and Refine
+- Click the sparkle (✨) icon next to the commit message field to have Copilot automatically generate a commit message based on your staged changes.
 
-1. **Review the code quality**:
-   - Does it match ARCHITECTURE.md design?
-   - Does it follow CONTRIBUTING.md style?
-   - Are error cases handled?
+- Click `✔️ Commit` dropdown and select `Commit and Push` to finalize the commit.
 
-2. **Ask for improvements** if needed:
-   ```
-   Review the code against ARCHITECTURE.md and suggest improvements
-   ```
+**What you should see:**
+> VS Code will automatically analyze your staged changes and generate a conventional commit message that summarizes all the bug fixes and test improvements, providing a more integrated workflow than manual prompts.
 
-3. **Add features** (optional exercises):
-   - Add task filtering by priority
-   - Add task search functionality
-   - Add task editing capability
-   - Add better formatted output with colors
+**Create PR**
 
-### Step 6: Experiment with Context Engineering
+You can use the GitHub Pull Request extension (GitHub Octocat icon) in VS Code to create a Pull Request
 
-Try these experiments to see how context engineering improves AI assistance:
+> [!TIP]
+> **Can't find the GitHub extension?** Look for the GitHub Octocat icon in your Activity Bar (left sidebar). If it's not there, install it by pressing `Ctrl+Shift+X` (Windows) or `Cmd+Shift+X` (Mac), search for "GitHub Pull Requests and Issues", and install the official extension by GitHub.
 
-**Experiment A: Without Context**
-1. Open a new chat without referencing the docs
-2. Ask: "Add a feature to sort tasks by priority"
-3. Observe the response quality
+- In the Source Control panel, click **"Create Pull Request"** or use the Command Palette (`Ctrl+Shift+P` (Windows) or `Cmd+Shift+P` (Mac) → "GitHub Pull Requests: Create Pull Request")
 
-**Experiment B: With Context**
-1. Open a new chat
-2. Ask: "Add a feature to sort tasks by priority, following the architecture in ARCHITECTURE.md and code style in CONTRIBUTING.md"
-3. Compare the response quality
+## Exercise 8 — Copilot as a Reviewer
 
-**Experiment C: Update Documentation**
-1. Modify ARCHITECTURE.md to add a new design requirement
-2. Ask the agent to implement a feature
-3. Verify it follows the updated architecture
+**Where you work:** On **GitHub.com**, inside your open Pull Request.
 
-## 🎓 Key Takeaways
+**Checklist:**
 
-### Context Engineering Benefits
-- ✅ **Consistency**: AI follows your architectural patterns and style
-- ✅ **Quality**: Better code generation aligned with project standards
-- ✅ **Efficiency**: Less back-and-forth to correct misunderstandings
-- ✅ **Persistence**: Context maintained across chat sessions
-- ✅ **Scalability**: Team members get consistent AI assistance
+* [ ] Navigate to your GitHub repository on GitHub.com
+* [ ] Open the PR created 
+* [ ] Assign Copilot as a reviewer to PR
+
+#### Visual Guide
+![Lab Instructions](img/review.png)
+
+
+## Exercise 9 — Use MCP server
+Go back to VS Code IDE. 
+Let's use Github MCP server. 
+
+In Agent Mode, ask to review the application and provide list of improvements. 
+
+Prompt: 
+
+Next prompt: 
+For the first top 3 improvement create an issue on github. 
+
+The MCP server should create the issues. 
+Go to github.com and valide that issues were created. 
+
+
+## Exercise 10 — Assign Coding agent for a selected issue
+**Where you work:** On **GitHub.com**, in the Issue UI.
+
+**What and why:**
+Copilot Agents can take an issue, create a branch, and open a draft PR with code changes. This exercise lets you hand off your feature request and observe Copilot’s automation.
+
+**Checklist:**
+
+* [ ] Open the issue you created in Exercise 9
+* [ ] Assign it to **Copilot** (Coding Agent)
+* [ ] Observe as Copilot opens a branch and draft PR implementing the feature
+
+### 1. Assign the issue to Coding Agent
+1. **Open your GitHub repository** in your browser and navigate to the **Issues** tab
+2. **Click on the issue** you created in Exercise 9 (e.g., "Add Nutrition Info to Recipe Details")
+3. **In the right-hand panel**, look for the **"Assignees"** section
+4. **First, assign yourself** by clicking "Assign yourself" - this ensures you'll get notifications and maintain ownership
+5. **Then, click the "Assign to Copilot" button** - this adds Copilot as a co-assignee to implement the feature
+6. Both you and Copilot should now be listed as assignees
+
+This will trigger the automated workflow where Copilot begins implementing your feature request while you maintain oversight and responsibility for the final outcome.
+
+
+TODO: Agents file
+#### Visual Guide
+![Lab Instructions](img/coding%20agent.png)
+
+
+### 2. Observe the automation
+
+Watch as Copilot opens a branch and draft PR implementing the feature automatically. The Agent follows the patterns defined in your `AGENTS.md` file to ensure code consistency.
 
 ### Best Practices Learned
 1. **Start with clear documentation** - Product, Architecture, Contributing
@@ -243,75 +293,3 @@ Try these experiments to see how context engineering improves AI assistance:
 - **Prompt files** add variants to the same workflow
 - **Instructions** provide persistent, project-wide context
 
-## 🔬 Advanced Exercises
-
-### Exercise 1: Add a New Agent
-Create a review agent (`.github/agents/review.agent.md`) that:
-- Reviews code against architecture and style guides
-- Identifies potential bugs or improvements
-- Suggests refactoring opportunities
-
-### Exercise 2: Enhance the Template
-Modify `plan-template.md` to include:
-- Security considerations section
-- Performance requirements
-- Accessibility guidelines
-
-### Exercise 3: Create Domain-Specific Prompts
-Add prompt files for common tasks:
-- `.github/prompts/feature.prompt.md` - Add a new feature
-- `.github/prompts/bugfix.prompt.md` - Fix a bug
-- `.github/prompts/refactor.prompt.md` - Refactor code
-
-### Exercise 4: Multi-Agent Workflow
-Create a complete workflow:
-1. Plan agent creates detailed plan
-2. TDD agent implements with tests
-3. Review agent reviews the code
-4. Document agent updates documentation
-
-### Exercise 5: Context Hierarchy
-Experiment with different context levels:
-- Global instructions (`.github/copilot-instructions.md`)
-- Module-specific instructions (create per-directory)
-- Feature-specific context (in implementation plans)
-
-## 📖 Additional Resources
-
-### GitHub Copilot Documentation
-- [Custom Instructions](https://code.visualstudio.com/docs/copilot/copilot-customization)
-- [Custom Agents](https://code.visualstudio.com/docs/copilot/copilot-agents)
-- [Prompt Files](https://code.visualstudio.com/docs/copilot/prompt-files)
-
-### Context Engineering Articles
-- [Context Engineering Best Practices](https://github.blog/2023-11-08-ai-powered-development-best-practices/)
-- [Prompt Engineering Guide](https://www.promptingguide.ai/)
-
-### C++ Resources
-- [C++17 Features](https://en.cppreference.com/w/cpp/17)
-- [Modern C++ Best Practices](https://isocpp.github.io/CppCoreGuidelines/)
-
-## 🤝 Contributing
-
-This lab is designed to be a learning resource. If you have suggestions for improvements:
-1. Try the lab and take notes on your experience
-2. Identify areas that could be clearer or more helpful
-3. Submit issues or pull requests with your suggestions
-
-## 📝 License
-
-This lab is provided as-is for educational purposes.
-
-## ✨ What's Next?
-
-After completing this lab, you can:
-- Apply context engineering to your own projects
-- Create custom agents for your team's workflows
-- Share your context engineering setup across projects
-- Teach others about effective AI-assisted development
-
----
-
-**Happy Learning! 🚀**
-
-Remember: Context engineering is about empowering AI to understand your project deeply. The better your context, the better your AI assistance!
