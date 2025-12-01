@@ -3,7 +3,6 @@
 Verify the CLI works end‑to‑end.
 
 1. **Build the application**  
-   Use your project build setup (e.g., CMake, Make, or VS Code task).
 2. **Run the CLI**  
 3. **Add some tasks**  
 4. **List tasks**  

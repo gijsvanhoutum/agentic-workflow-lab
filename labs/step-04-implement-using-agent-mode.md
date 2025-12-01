@@ -15,7 +15,7 @@ Use the handoff link in the planning agent’s response (for example: “Start I
 
 3. **Review the implementation**:
    - Check that files are created in the correct structure
-   - Verify code follows the C++17 standard and style guide
+   - Verify code follows the coding standard and style guide
    - Confirm tests are included (if TDD agent was used)
 
 ---

@@ -11,8 +11,7 @@ This is a learning lab for GitHub Copilot's context engineering features. The Ta
 ## Key Principles
 
 - Keep the implementation simple and focused on core functionality
-- Follow the layered architecture pattern (CLI → Business Logic → Data Persistence)
-- Write clear, maintainable C++ code following the style guide
+- Write clear, maintainable code following the style guide
 - Ensure all changes are tested and work correctly
 - Maintain comprehensive documentation
 

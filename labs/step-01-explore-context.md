@@ -16,20 +16,22 @@ Start by reviewing the core documents that define the product, architecture, and
   Outlines the system design, layered architecture, and key architectural patterns.
 
 - **`docs/CONTRIBUTING.md`**  
-  Provides coding standards and best practices for contributing to the C++ codebase.
+  Provides coding standards and best practices for contributing to the codebase.
 
 These files establish the shared understanding required for both developers and AI agents.
 
 ---
 
-## ⚙️ **2. Review the Custom Copilot Instructions**
+## ⚙️ **2. Review and update the Custom Copilot Instructions**
 
 - Open **`.github/copilot-instructions.md`**  
   This file defines the project-wide context injected into all GitHub Copilot interactions.
 
 Pay attention to:
 - How the file references your documentation (PRODUCT, ARCHITECTURE, CONTRIBUTING)  
-- How it shapes the AI’s behavior across the entire repository  
+
+- Update CONTRIBUTING guidlines for the language of your choice. 
+- Adjust PRODUCT, ARCHITECTURE, custom-instructions file if needed.
 
 This is the backbone of the context engineering setup.
 

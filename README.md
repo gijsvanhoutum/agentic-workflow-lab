@@ -74,8 +74,7 @@ You are set. If **github/github-mcp-server** does not show as Running, run **MCP
 
 ## 🏗️ Application Overview
 
-In this lab, you'll implement a **Task Manager CLI** - a command-line task management application for developers.
-
+In this lab, you'll implement a simple **Task Manager CLI** - a command-line task management application.
 
 
 ## 🚀 Labs Navigation
