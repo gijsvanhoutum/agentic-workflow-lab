@@ -27,9 +27,10 @@ These files establish the shared understanding required for both developers and 
 ### Helpful links for customizing responses
 
 - **Repository Custom Instructions:** Configure project-wide instructions in VS Code — [add-repository-instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions?tool=vscode)
-- **Custom Agents Concept:** Build tailored Copilot agents — [custom-agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents)
-- **Customization Library:** Examples of well-defined instructions, prompts, and agents — [customization-library](https://docs.github.com/copilot/tutorials/customization-library)
-- **Community Examples:** Curated list of prompts, agents, and repos — [awesome-copilot](https://github.com/github/awesome-copilot)
+- **Custom Agents Concept:** Build tailored Copilot agents - [custom-agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents)
+- **Customization Library:** Examples of well-defined instructions, prompts, and agents - [customization-library](https://docs.github.com/copilot/tutorials/customization-library)
+- **Community Examples:** Curated list of prompts, agents, and repos - [awesome-copilot](https://github.com/github/awesome-copilot)
+- **VS Code open sourced:** Instructions used to buid VS code - [microsoft/vscode](https://github.com/microsoft/vscode/tree/main/.github)
 
 
 - Open **`.github/copilot-instructions.md`**  
