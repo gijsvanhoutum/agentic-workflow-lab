@@ -32,7 +32,7 @@ class FileTaskRepository(ITaskRepository):
                 for t in raw.get("tasks", [])
             ]
             self._next_id = int(
-                raw.get("next_id", (max([x.id for x in self._tasks], default=0) + 1)))
+                raw.get("next_id", (max((x.id for x in self._tasks), default=0) + 1)))
         except Exception:
             # If the file is corrupt, start fresh
             self._tasks = []
