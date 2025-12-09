@@ -122,7 +122,7 @@ python -m src.cli done 1
 ```
 
 Notes:
-- In-memory store; data resets every run.
+- When running via `python -m src.cli`, an in-memory store is used and data resets every run. (For file-backed persistence, see above: `python src/cli.py`.)
 - Layered design: CLI → Service → In-memory Repository.
 
 ### Run Tests
