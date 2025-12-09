@@ -1,3 +1,38 @@
+# Agentic Workflow Lab
+
+## Getting Started
+ - Python 3.11 in devcontainer
+ - Pytest for tests
+
+## Task Manager CLI Persistence
+
+- Running the CLI via `python src/cli.py ...` uses a file-backed repository storing tasks in `tasks.json` at the workspace root.
+- Tests and imports use an in-memory repository, so unit tests are isolated.
+- `tasks.json` is ignored by git (see `.gitignore`) and should not be committed.
+
+### Quick demo
+
+```
+python src/cli.py add "Buy groceries"
+python src/cli.py list
+python src/cli.py done 1
+python src/cli.py list
+```
+
+## Testing
+
+- Tests use `pytest` and are located under `tests/`.
+- In the devcontainer, Python testing is enabled and auto-discovers tests.
+- Run tests manually:
+
+```
+pytest -q
+```
+
+- If you don't see the Testing view in VS Code:
+   - Ensure the Python extension is active.
+   - Run “Python: Discover Tests” from the Command Palette.
+   - Confirm the interpreter is `/usr/local/bin/python`.
 # Agentic workflow Lab - GitHub Copilot
 
 ## 🎯 Lab Objectives
@@ -75,6 +110,29 @@ You are set. If **github/github-mcp-server** does not show as Running, run **MCP
 ## 🏗️ Application Overview
 
 In this lab, you'll implement a simple **Task Manager CLI** - a command-line task management application.
+
+### Quick Usage (Python)
+
+Run from the repo root:
+
+```
+python -m src.cli add "Buy groceries"
+python -m src.cli list
+python -m src.cli done 1
+```
+
+Notes:
+- When running via `python -m src.cli`, an in-memory store is used and data resets every run. (For file-backed persistence, see above: `python src/cli.py`.)
+- Layered design: CLI → Service → In-memory Repository.
+
+### Run Tests
+
+Install `pytest` if needed and run:
+
+```
+pip install pytest
+pytest -q
+```
 
 
 ## 🚀 Labs Navigation

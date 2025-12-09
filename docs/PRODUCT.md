@@ -25,5 +25,5 @@ A minimal task manager CLI for quick demos.
 ## Implementation Guidelines
 
 ### Keep It Simple
-- No file persistence required initially (in-memory is fine)
+// In-memory for tests and imports; CLI script uses file persistence (tasks.json) for quick demos.
 
