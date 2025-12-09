@@ -18,6 +18,21 @@ python src/cli.py list
 python src/cli.py done 1
 python src/cli.py list
 ```
+
+## Testing
+
+- Tests use `pytest` and are located under `tests/`.
+- In the devcontainer, Python testing is enabled and auto-discovers tests.
+- Run tests manually:
+
+```
+pytest -q
+```
+
+- If you don't see the Testing view in VS Code:
+   - Ensure the Python extension is active.
+   - Run “Python: Discover Tests” from the Command Palette.
+   - Confirm the interpreter is `/usr/local/bin/python`.
 # Agentic workflow Lab - GitHub Copilot
 
 ## 🎯 Lab Objectives
