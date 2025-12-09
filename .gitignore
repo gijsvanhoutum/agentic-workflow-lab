@@ -48,3 +48,6 @@ tasks.txt
 
 # Binary
 task-manager
+
+
+*.pyc
