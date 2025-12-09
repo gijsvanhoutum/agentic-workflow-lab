@@ -76,6 +76,29 @@ You are set. If **github/github-mcp-server** does not show as Running, run **MCP
 
 In this lab, you'll implement a simple **Task Manager CLI** - a command-line task management application.
 
+### Quick Usage (Python)
+
+Run from the repo root:
+
+```
+python -m src.cli add "Buy groceries"
+python -m src.cli list
+python -m src.cli done 1
+```
+
+Notes:
+- In-memory store; data resets every run.
+- Layered design: CLI → Service → In-memory Repository.
+
+### Run Tests
+
+Install `pytest` if needed and run:
+
+```
+pip install pytest
+pytest -q
+```
+
 
 ## 🚀 Labs Navigation
 
