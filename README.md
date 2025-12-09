@@ -1,3 +1,23 @@
+# Agentic Workflow Lab
+
+## Getting Started
+ - Python 3.11 in devcontainer
+ - Pytest for tests
+
+## Task Manager CLI Persistence
+
+- Running the CLI via `python src/cli.py ...` uses a file-backed repository storing tasks in `tasks.json` at the workspace root.
+- Tests and imports use an in-memory repository, so unit tests are isolated.
+- `tasks.json` is ignored by git (see `.gitignore`) and should not be committed.
+
+### Quick demo
+
+```
+python src/cli.py add "Buy groceries"
+python src/cli.py list
+python src/cli.py done 1
+python src/cli.py list
+```
 # Agentic workflow Lab - GitHub Copilot
 
 ## 🎯 Lab Objectives

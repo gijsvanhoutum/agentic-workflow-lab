@@ -45,6 +45,7 @@ obj/
 
 # Task data file
 tasks.txt
+tasks.json
 
 # Binary
 task-manager

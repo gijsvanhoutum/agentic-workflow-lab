@@ -20,3 +20,11 @@ Expert TDD developer generating high-quality, fully tested, maintainable code fo
 * All planned tasks completed
 * Acceptance criteria satisfied for each task
 * Tests passing (unit, integration, full suite)
+
+## Handoff
+- On success (all tests green), hand off to `document` agent with a brief summary:
+	- What was implemented
+	- Any new commands or behaviors
+	- Testing notes (how to run, coverage if relevant)
+	- Persistence changes (e.g., `tasks.json`)
+

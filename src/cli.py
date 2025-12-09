@@ -1,6 +1,8 @@
 import sys
 from typing import List
+from pathlib import Path
 
+from src.repository.file_repo import FileTaskRepository
 from src.repository.in_memory import InMemoryTaskRepository
 from src.service.task_service import TaskService
 
@@ -66,4 +68,8 @@ def main(argv: List[str]) -> int:
 
 
 if __name__ == "__main__":
+    _ROOT = Path(__file__).resolve().parents[1]
+    _DATA_FILE = _ROOT / "tasks.json"
+    _REPO = FileTaskRepository(_DATA_FILE)
+    _SERVICE = TaskService(_REPO)
     sys.exit(main(sys.argv[1:]))
